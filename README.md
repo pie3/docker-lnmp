@@ -16,3 +16,10 @@ docker-compose rm      #Remove stopped containers
 docker-compose up      #Create and start containers
 
 #执行 docker-compose up 命令没有指明 .yml 文件时，需要切换到.yml所在目录后再执行 docker-compose up 命令
+
+#参考资料：
+https://github.com/evan886/docker-compose-lnmp
+https://github.com/shmilylbelva/dnmp
+
+#DockerHub镜像加速：https://wiki.linuxchina.net/index.php/DockerHub镜像加速
+
