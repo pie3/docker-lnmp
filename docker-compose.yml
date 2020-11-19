@@ -1,0 +1,67 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:1.15.7-alpine
+    container_name: nginx1.15
+    ports:
+      - "80:80"
+    volumes:
+<<<<<<< 5700663b75295671af0f067bf3e92a9220cd0629
+    # /Users/Pie/www/   /Users/Pie/docker-lnmp/ 均为宿主目录，根据实际情况修改
+=======
+>>>>>>> 本地初始化 docker-lnmp
+      - /Users/Pie/www/:/var/www/html/:rw
+      - /Users/Pie/docker-lnmp/conf/nginx/:/etc/nginx/:rw
+      - /Users/Pie/docker-lnmp/log/nginx/:/var/log/nginx/:rw
+    environment:
+      TZ: "Asia/Shanghai"
+    restart: always
+    networks:
+      - default
+
+  php:
+    build: .
+    container_name: php7.2
+    volumes:
+      - /Users/Pie/www/:/var/www/html/:rw
+      - /Users/Pie/docker-lnmp/conf/php/:/usr/local/etc/php/:rw
+      - /Users/Pie/docker-lnmp/conf/php-fpm.d/:/usr/local/etc/php-fpm.d/:rw
+      #- /Users/Pie/docker-lnmp/log/:/var/log/:rw
+    restart: always
+    cap_add:
+      - SYS_PTRACE
+    networks:
+      - default
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - /Users/Pie/docker-lnmp/conf/mysql/:/etc/mysql/:rw
+      - /Users/Pie/docker-lnmp/mysql/data/:/var/lib/mysql/:rw
+      #- /Users/Pie/docker-lnmp/log/:/var/log/:rw
+    restart: always
+    networks:
+      - default
+    environment:
+      MYSQL_ROOT_PASSWORD: "mysql1810"
+      TZ: "Asia/Shanghai"
+
+  redis:
+    image: redis:5.0.3
+    container_name: redis5.0.3
+    ports:
+      - "6379:6379"
+    volumes:
+      - /Users/Pie/docker-lnmp/conf/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    restart: always
+    entrypoint: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    environment:
+      TZ: "Asia/Shanghai"
+    networks:
+      - default
+
+networks:
+  default:
