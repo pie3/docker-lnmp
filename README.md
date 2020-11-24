@@ -24,3 +24,5 @@ https://github.com/shmilylbelva/dnmp
 #DockerHub镜像加速：https://wiki.linuxchina.net/index.php/DockerHub镜像加速
 #mac上利用docker搭建lnmp开发环境: https://www.jianshu.com/p/d04e00d0bf8d
 
+#* Usually, an Alpine Linux image doesn't contain bash, Instead you can use /bin/ash, /bin/sh, ash or only sh.
+
