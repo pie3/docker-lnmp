@@ -6,10 +6,7 @@ services:
     ports:
       - "80:80"
     volumes:
-<<<<<<< 5700663b75295671af0f067bf3e92a9220cd0629
     # /Users/Pie/www/   /Users/Pie/docker-lnmp/ 均为宿主目录，根据实际情况修改
-=======
->>>>>>> 本地初始化 docker-lnmp
       - /Users/Pie/www/:/var/www/html/:rw
       - /Users/Pie/docker-lnmp/conf/nginx/:/etc/nginx/:rw
       - /Users/Pie/docker-lnmp/log/nginx/:/var/log/nginx/:rw
