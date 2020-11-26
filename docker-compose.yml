@@ -23,7 +23,7 @@ services:
       - /Users/Pie/www/:/var/www/html/:rw
       - /Users/Pie/docker-lnmp/conf/php/:/usr/local/etc/php/:rw
       - /Users/Pie/docker-lnmp/conf/php-fpm.d/:/usr/local/etc/php-fpm.d/:rw
-      #- /Users/Pie/docker-lnmp/log/:/var/log/:rw
+      - /Users/Pie/docker-lnmp/log/:/var/log/:rw
     restart: always
     cap_add:
       - SYS_PTRACE

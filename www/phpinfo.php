@@ -13,7 +13,7 @@
 	    $conn = new PDO("mysql:host=$servername;", $username, $password);
 	    echo "Mysql连接成功<br>"; 
 
-	    $redis = new Redis();
+	    $redis = new redis();
 	    $redis->connect('127.0.0.1', '6379');
 	    $redis->set('name', 'Test');
 

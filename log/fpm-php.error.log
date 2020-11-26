@@ -1,0 +1,4 @@
+[26-Nov-2020 15:11:47 UTC] PHP Fatal error:  Uncaught Error: Class 'redis' not found in /var/www/html/phpinfo.php:19
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/phpinfo.php on line 19
