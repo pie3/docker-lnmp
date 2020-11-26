@@ -16,17 +16,17 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     && apt install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev vim \ 
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install gd \ 
     && :\
-    && apt-get install -y libicu-dev \
+    && apt install -y libicu-dev \
     && docker-php-ext-install intl \
     && :\
-    && apt-get install -y libxml2-dev \
-    && apt-get install -y libxslt-dev \
+    && apt install -y libxml2-dev \
+    && apt install -y libxslt-dev \
     && docker-php-ext-install soap \
     && docker-php-ext-install xsl \
     && docker-php-ext-install xmlrpc \
     && docker-php-ext-install wddx \
     && :\
-    && apt-get install -y libbz2-dev \
+    && apt install -y libbz2-dev \
     && docker-php-ext-install bz2 \
     && :\
     && docker-php-ext-install zip \
@@ -43,12 +43,8 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     && docker-php-ext-install sysvmsg \
     && docker-php-ext-install sysvsem \
     && docker-php-ext-install sysvshm \
-    && docker-php-ext-install opcache \
-    && :\
-    && apt-get install -y curl \
-    && apt-get install -y libcurl3 \
-    && apt-get install -y libcurl4-openssl-dev \
-    && docker-php-ext-install curl
+    && docker-php-ext-install opcache
+    
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer

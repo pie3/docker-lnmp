@@ -11,7 +11,13 @@
 	 
 	try {
 	    $conn = new PDO("mysql:host=$servername;", $username, $password);
-	    echo "连接成功<br>"; 
+	    echo "Mysql连接成功<br>"; 
+
+	    $redis = new Redis();
+	    $redis->connect('127.0.0.1', '6379');
+	    $redis->set('name', 'Test');
+
+	    echo '测试获取redis name 值：' . $redis->get('name');
 	}
 	catch(PDOException $e)
 	{
