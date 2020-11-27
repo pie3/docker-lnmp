@@ -1,5 +1,5 @@
 .DS_store
 .gitignore
 mysql
-log
+log/*
 
