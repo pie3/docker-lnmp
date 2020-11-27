@@ -50,9 +50,14 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
 # Install Xdebug extension from source
+# 安装完 PHP后，修改“php.ini”，添加“extension=xdebug.so”，并重启PHP：docker-compose restart php
+
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
+
 # Redis
+# 安装完 PHP后，修改“php.ini”，添加“extension=redis.so”，并重启PHP：docker-compose restart php
+
 ENV PHPREDIS_VERSION 5.3.2
 RUN curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/$PHPREDIS_VERSION.tar.gz \
     && tar xfz /tmp/redis.tar.gz \
