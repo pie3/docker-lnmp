@@ -32,7 +32,20 @@ docker-compose up      #Create and start containers
 docker-compose up -d   #Detached mode: Run containers in the background,
                         print new container names.
 
-#执行 docker-compose up 命令没有指明 .yml 文件时，需要切换到.yml所在目录后再执行 docker-compose up 命令
+#docker-compose 常用命令说明：
+docker-compose ps -a			#查看当前有哪些容器（docker-compose.yml 所在文件夹下执行）
+docker-compose config -q		#验证（docker-compose.yml）文件配置，
+								 当配置正确时，不输出任何内容，当文件配置错误，输出错误信息
+docker-compose exec 服务 bash	#进入服务容器(注意：服务是编排文件中的 service)
+docker-compose -f docker-compose.yml up -d  #指明 .yml 文件，没有指明 .yml 文件时，
+											 需要切换到.yml所在目录后再执行 docker-compose up 命令
+
+docker-compose up -d nginx
+docker-compose stop nginx
+
+docker-compose exec -it <container-name> bash
+
+
 
 #参考资料：
 https://github.com/evan886/docker-compose-lnmp

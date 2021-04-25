@@ -60,5 +60,49 @@ services:
     networks:
       - default
 
+  rabbitmq:
+    #use docker images
+    image: rabbitmq:3.8.14-management-alpine
+    container_name: rabbitmq3.8.14
+    #setup host name
+    hostname: rabbitmq3.8.14
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+    # /Users/Pie/www/   /Users/Pie/docker-lnmp/ 均为宿主目录，根据实际情况修改
+      - /Users/Pie/docker-lnmp/db_data/rabbitmq/:/var/lib/rabbitmq/:rw
+      - /Users/Pie/docker-lnmp/log/rabbitmq/:/var/log/rabbitmq/:rw
+    environment:
+      #设置后台登录用户和密码，没设置默认为：guest/guest
+      RABBITMQ_DEFAULT_USER: "root"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq1810"
+      TZ: "Asia/Shanghai"
+    restart: always
+    networks:
+      - default
+
+  mongodb:
+    #use docker images
+    image: mongo:4.2
+    container_name: mongodb4.2
+    ports:
+      #使用默认的 MongoDB 端口 27017 到 27019
+      - "27017-27019:27017-27019"
+    volumes:
+    # /Users/Pie/www/   /Users/Pie/docker-lnmp/ 均为宿主目录，根据实际情况修改
+      - /Users/Pie/docker-lnmp/conf/mongodb/:/etc/mongo/:rw
+      - /Users/Pie/docker-lnmp/db_data/mongodb/:/data/db/:rw
+      - /Users/Pie/docker-lnmp/log/mongodb/:/var/log/mongodb/:rw
+    # - /Users/Pie/docker-lnmp/db_data/mongodb/mongo-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/:rw
+    environment:
+      #设置后台登录用户和密码，没设置默认为：guest/guest
+      MONGO_INITDB_ROOT_USERNAME: "root"
+      ME_CONFIG_MONGODB_ADMINPASSWORD: "mongodb1810"
+      TZ: "Asia/Shanghai"
+    restart: always
+    networks:
+      - default
+
 networks:
   default:
