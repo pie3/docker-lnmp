@@ -91,14 +91,14 @@ services:
       - "27017-27019:27017-27019"
     volumes:
     # /Users/Pie/www/   /Users/Pie/docker-lnmp/ 均为宿主目录，根据实际情况修改
-      - /Users/Pie/docker-lnmp/conf/mongodb/:/etc/mongo/:rw
+      - /Users/Pie/docker-lnmp/conf/mongodb/mongod.conf:/etc/mongod.conf:rw
       - /Users/Pie/docker-lnmp/db_data/mongodb/:/data/db/:rw
-      - /Users/Pie/docker-lnmp/log/mongodb/:/var/log/mongodb/:rw
-    # - /Users/Pie/docker-lnmp/db_data/mongodb/mongo-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/:rw
+      - /Users/Pie/docker-lnmp/log/mongodb/:/var/log/mongodb/:ro
+      - /Users/Pie/docker-lnmp/db_data/mongodb/mongo-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/:rw
     environment:
       #设置后台登录用户和密码，没设置默认为：guest/guest
       MONGO_INITDB_ROOT_USERNAME: "root"
-      ME_CONFIG_MONGODB_ADMINPASSWORD: "mongodb1810"
+      MONGO_INITDB_ROOT_PASSWORD: "mongodb1810"
       TZ: "Asia/Shanghai"
     restart: always
     networks:

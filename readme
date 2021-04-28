@@ -43,7 +43,7 @@ docker-compose -f docker-compose.yml up -d  #指明 .yml 文件，没有指明 .
 docker-compose up -d nginx
 docker-compose stop nginx
 
-docker-compose exec -it <container-name> bash
+docker exec -it <container-name> bash
 
 
 
