@@ -96,7 +96,7 @@ services:
       - /Users/Pie/docker-lnmp/log/mongodb/:/var/log/mongodb/:ro
       - /Users/Pie/docker-lnmp/db_data/mongodb/mongo-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/:rw
     environment:
-      #设置后台登录用户和密码，没设置默认为：guest/guest
+      #设置后台登录用户和密码
       MONGO_INITDB_ROOT_USERNAME: "root"
       MONGO_INITDB_ROOT_PASSWORD: "mongodb1810"
       TZ: "Asia/Shanghai"
